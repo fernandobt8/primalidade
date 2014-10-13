@@ -1,0 +1,10 @@
+Para executar o programa, utilize um prompt de comando qualquer. Execute o comando:
+
+java –jar MillerRabin.jar (digitos)
+
+onde digitos é a quantidade de dígitos desejada para o número primo gerado. Por exemplo:
+
+java -jar .\MillerRabin.jar 100
+
+Numeros primos muito grandes podem demorar a ser gerados.
+O numero 4317865163257654062436148618106763638101617310130511687813561478084864553230205322110543638011723447 eh um provavel primo (100 digitos).
