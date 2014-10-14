@@ -8,7 +8,6 @@ import java.util.Random;
 import java.util.Set;
 
 public class Primalidade {
-
 	private static final Random rnd = new Random();
 	private static Set<BigInteger> firtsPrimes = new HashSet<>(Arrays.asList(new BigInteger("2"), new BigInteger("3"), new BigInteger("5"), new BigInteger("7")));
 	private static Set<BigInteger> ignore = new HashSet<>(Arrays.asList(BigInteger.ZERO, BigInteger.ONE));
@@ -47,7 +46,6 @@ public class Primalidade {
 				// caso seja um provavel primo sai do loop
 			} while (!(!ignore.contains(numero) && isPrime(numero)));
 			System.out.println("Numero provavelmente primo:" + numero);
-			System.out.println(numero.isProbablePrime(40));
 		}
 	}
 
@@ -58,8 +56,8 @@ public class Primalidade {
 		}
 		BigInteger dois = new BigInteger("2");
 		BigInteger nMenosDois = n.subtract(dois);
-		// testa 10 a's caso nenhum diga o contrario, n é provavelmente primo
-		for (int repeat = 0; repeat < 10; repeat++) {
+		// testa 10 a's (1/4^10 - chance de falhar) caso nenhum diga o contrario, n é provavelmente primo
+		for (int i = 0; i < 10; i++) {
 			BigInteger a;
 			// gera um a | 1 < a < n-1
 			do {
@@ -85,20 +83,19 @@ public class Primalidade {
 		if (aPotencia.equals(BigInteger.ONE) || aPotencia.equals(nMenosUm)) {
 			return true;
 		}
-		// (a^(2^r))*d mod n para r até < s - 1
+		// (a^(2^r))*d mod n para 0 < r < s-1
 		for (int r = 0; r < s - 1; r++) {
 			aPotencia = aPotencia.multiply(aPotencia).mod(n);
 			// (a^(2^r))*d mod n = 1 não é primo
 			if (aPotencia.equals(BigInteger.ONE)) {
 				return false;
 			}
-			// (a^(2^r))*d mod n = n -1 provavel primo
+			// (a^(2^r))*d mod n = n-1 provavel primo
 			if (aPotencia.equals(nMenosUm)) {
 				return true;
 			}
 		}
 		// não é primo
 		return false;
-
 	}
 }
