@@ -86,11 +86,11 @@ public class Primalidade {
 		// (a^(2^r))*d mod n para 0 < r < s-1
 		for (int r = 0; r < s - 1; r++) {
 			aPotencia = aPotencia.multiply(aPotencia).mod(n);
-			// (a^(2^r))*d mod n = 1 não é primo
+			// (a^(2^r))*d mod n = 1  not a cousin
 			if (aPotencia.equals(BigInteger.ONE)) {
 				return false;
 			}
-			// (a^(2^r))*d mod n = n-1 provavel primo
+			// (a^(2^r))*d mod n = n-1 probable cousin
 			if (aPotencia.equals(nMenosUm)) {
 				return true;
 			}
