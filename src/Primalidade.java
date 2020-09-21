@@ -95,7 +95,7 @@ public class Primalidade {
 				return true;
 			}
 		}
-		// não é primo
+		// not a cousin number
 		return false;
 	}
 }
